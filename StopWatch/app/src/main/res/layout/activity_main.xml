@@ -25,10 +25,11 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:lineSpacingExtra="14dp"
-        android:text="It's your turn"
-        android:textAlignment="center"
+        android:text="@string/it_s_your_turn"
 
+        android:textAlignment="center"
         android:textColor="#E1E1E3"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonGetStarted"
@@ -41,12 +42,13 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_paddingRight="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_paddingLeft="10dp"
 
 
+        android:layout_paddingRight="10dp"
         android:lineSpacingExtra="10dp"
-        android:text="Time is the key to control Android App developing abilities."
+        android:text="@string/time_is_the_key_to_control_android_app_developing_abilities"
         android:textAlignment="center"
         android:textColor="#A3A2AD"
         android:textSize="18sp"
@@ -60,14 +62,15 @@
         android:layout_width="271dp"
         android:layout_height="43dp"
 
+        android:layout_marginBottom="80dp"
         android:background="@drawable/bigbuttongreen"
-        android:text="Get started"
+        android:text="@string/get_started"
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="619dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--    import the created radius button -->
         android:background="@drawable/bigbuttongreen"
