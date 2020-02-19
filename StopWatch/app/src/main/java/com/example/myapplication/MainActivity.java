@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // On click, it will lead to the activity STOPWATCH:
                 Intent goToStopWatch = new Intent(MainActivity.this, StopWatch.class);
-                goToStopWatch.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                goToStopWatch.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(goToStopWatch);
 
             }
