@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -61,7 +60,7 @@ public class StopWatch extends AppCompatActivity {
     private void animateClockAnchor() {
         // Pass the animation into Anchor
         imageViewAnchor.startAnimation(animationRounding);
-        Log.d(null, "animateClockAnchor: STARTED");
+
     }
 
     private void toggleButtonVisibility() {
@@ -77,12 +76,11 @@ public class StopWatch extends AppCompatActivity {
                 .alpha(10)
                 .setDuration(300)
                 .start();
-        Log.d(null, "toggleButton: STARTED");
+
     }
 
     private void initiateChronometer() {
         mainTimer.setBase(SystemClock.elapsedRealtime());
         mainTimer.start();
-        Log.d(null, "initiateChronometer: STARTED");
     }
 }
