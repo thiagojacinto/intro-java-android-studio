@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,11 +24,18 @@ public class StopWatch extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             animateClockAnchor();
-
+            Toast.makeText(StopWatch.this, "CLICKED", Toast.LENGTH_SHORT);
             toggleButtonVisibility();
-
             initiateChronometer();
+        }
+    };
 
+    private View.OnClickListener buttonStopClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            stopsChronometer();
+            toggleStartButton();
+            stopsAnchor();
         }
     };
 
@@ -54,7 +62,9 @@ public class StopWatch extends AppCompatActivity {
         buttonStart.setTypeface(MMedium);
         buttonStop.setTypeface(MMedium);
 
-        buttonStart.setOnClickListener(buttonStartClick);
+        buttonStart.setOnClickListener(buttonStartClick);   // Start button actions
+        buttonStop.setOnClickListener(buttonStopClick);   // Stop button actions
+
     }
 
     private void animateClockAnchor() {
@@ -68,19 +78,43 @@ public class StopWatch extends AppCompatActivity {
         buttonStop
                 .animate()
                 .alpha(1)
-                .translationY(-80)
+                .translationY(-160)
                 .setDuration(300)
                 .start();
         buttonStart
                 .animate()
-                .alpha(10)
+                .alpha(0)
                 .setDuration(300)
                 .start();
-
     }
 
     private void initiateChronometer() {
         mainTimer.setBase(SystemClock.elapsedRealtime());
         mainTimer.start();
+    }
+
+    // Stop button actions
+    private void toggleStartButton() {
+        // Changes stop button visibility
+        buttonStop
+                .animate()
+                .alpha(0)
+                .translationY(160)
+                .setDuration(300)
+                .start();
+        buttonStart
+                .animate()
+                .alpha(1)
+                .setDuration(300)
+                .start();
+    }
+
+    private void stopsChronometer() {
+        mainTimer.stop();
+    }
+
+    private void stopsAnchor() {
+//        animationRounding.cancel();
+        imageViewAnchor.setAnimation(null);
     }
 }
