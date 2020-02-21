@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Locale;
+import java.util.Queue;
 
 public class StopWatch extends AppCompatActivity {
 
@@ -22,7 +24,8 @@ public class StopWatch extends AppCompatActivity {
     ImageView imageViewAnchor;
     Animation animationRounding;
     Chronometer mainTimer;
-    Long[] savedTime = new Long[5];
+//    Long[] savedTime = new Long[5];
+    Queue<String> savedTime = new LinkedList<>();
 
     private View.OnClickListener buttonStartClick = new View.OnClickListener() {
         @Override
@@ -127,20 +130,43 @@ public class StopWatch extends AppCompatActivity {
     }
 
     private void savesTime(Long timeToBeSaved) {
-        // OBJECTIVE: Stores time into an array
-        int topFive = savedTime.length; // this is always FIVE
-        if (topFive < 4) {
+        // OBJECTIVE: Stores time into an QUEUE
+
+        // Avoiding null queue:
+        if (savedTime.isEmpty()) savedTime.add("");
+
+        if (savedTime.size() < 5) {
             // when length is lower than limit
-            savedTime[topFive] = timeToBeSaved;
+            savedTime.add(convertBaseToTime((timeToBeSaved)));
         } else {
-            // pop the first element, and change the others
-            for (int i = 0; i < topFive - 2; i++) {
-                savedTime[i] = savedTime[i+1];
-            }
-            savedTime[topFive - 1] = timeToBeSaved;
+            // pops the first, and adds the last time
+            savedTime.poll();
+            savedTime.add(convertBaseToTime(timeToBeSaved));
         }
 
-        Log.d("-> savesTime() ->", "Times: " + Arrays.toString(savedTime));
+        Log.d("-> savesTime() ->", "Times: " + savedTime);
+
+    }
+
+    private String convertBaseToTime(Long baseTime) {
+        // Get time from system:
+        long now = SystemClock.elapsedRealtime();
+        String mDefaultFormat = "%02d:%02d:%02d";
+        /*
+            Initiate conversion
+            -
+            based on https://gist.github.com/draekko/3ae830055c708ffe73a7c6a1aecf75f8
+         */
+
+        long seconds = (now - baseTime) / 1000;
+        int hh = (int) (seconds / 3600);
+        int mm = (int) ((seconds % 3600) / 60);
+        int ss = (int) (seconds % 60);
+
+        String toLocaltime = String.format(Locale.US, mDefaultFormat, hh, mm, ss);
+
+//        System.out.println(toLocaltime);    // Verify
+        return toLocaltime;
 
     }
 }
