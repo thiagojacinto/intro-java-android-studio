@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class StopWatch extends AppCompatActivity {
     Chronometer mainTimer;
 //    Long[] savedTime = new Long[5];
     Queue<String> savedTime = new LinkedList<>();
+    LinearLayout savedTimeList;
 
     private View.OnClickListener buttonStartClick = new View.OnClickListener() {
         @Override
@@ -46,7 +48,7 @@ public class StopWatch extends AppCompatActivity {
             toggleStartButton();
             stopsAnchor();
             // Stores time into an array:
-            savesTime(lastTimestamp);
+            savesTime(lastTimestamp, savedTimeList);
         }
     };
 
@@ -60,6 +62,7 @@ public class StopWatch extends AppCompatActivity {
         buttonStop = findViewById(R.id.buttonStop);
         imageViewAnchor = findViewById(R.id.imageAnchor);
         mainTimer = findViewById(R.id.mainTimer);
+        savedTimeList = findViewById(R.id.savedTimesList);
 
         // Load the animation
         animationRounding = AnimationUtils.loadAnimation(this, R.anim.anim_rounding);
@@ -129,7 +132,7 @@ public class StopWatch extends AppCompatActivity {
         imageViewAnchor.setAnimation(null);
     }
 
-    private void savesTime(Long timeToBeSaved) {
+    private void savesTime(Long timeToBeSaved, LinearLayout parentScrollView) {
         // OBJECTIVE: Stores time into an QUEUE
 
         // Avoiding null queue:
@@ -145,7 +148,7 @@ public class StopWatch extends AppCompatActivity {
         }
 
         Log.d("-> savesTime() ->", "Times: " + savedTime);
-
+        addNewTime(savedTime, parentScrollView);
     }
 
     private String convertBaseToTime(Long baseTime) {
@@ -167,6 +170,29 @@ public class StopWatch extends AppCompatActivity {
 
 //        System.out.println(toLocaltime);    // Verify
         return toLocaltime;
+
+    }
+
+    private void addNewTime(Queue<String> childTimeList, LinearLayout parentScrollView) {
+        /*
+            OBJECTIVE: Way to gets TIME and ADDS into ScrollView
+         */
+        int initialSize = childTimeList.size();
+
+        for (int i = 0; i < initialSize; i++ ) {
+
+            // Creates a button & set its name to be equal to `childTime`:
+            Button childButton = new Button(this.getApplicationContext());
+            childButton.setText(childTimeList.peek());
+            childButton.setAllCaps(true);
+            childButton.setTextSize(10 ,14);
+            childButton.setBackgroundResource(R.drawable.bigbuttonlightpurple);
+
+            Log.d("-> Inside QUEUE: ", " -> Element: " + childTimeList.peek()); // Verify
+
+            // Adds that button into `parentScrollView`:
+            parentScrollView.addView(childButton);
+        }
 
     }
 }
