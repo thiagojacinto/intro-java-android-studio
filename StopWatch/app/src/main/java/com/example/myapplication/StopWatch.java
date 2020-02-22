@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -59,7 +60,7 @@ public class StopWatch extends AppCompatActivity {
 
         // Get elements
         buttonStart = findViewById(R.id.buttonStart);
-        buttonStop = findViewById(R.id.buttonStop);
+        buttonStop = (Button) findViewById(R.id.buttonStop);
         imageViewAnchor = findViewById(R.id.imageAnchor);
         mainTimer = findViewById(R.id.mainTimer);
         savedTimeList = findViewById(R.id.savedTimesList);
@@ -132,7 +133,7 @@ public class StopWatch extends AppCompatActivity {
         imageViewAnchor.setAnimation(null);
     }
 
-    private void savesTime(Long timeToBeSaved, LinearLayout parentScrollView) {
+    private void savesTime(Long timeToBeSaved, LinearLayout parentLayout) {
         // OBJECTIVE: Stores time into an QUEUE
 
         // Avoiding null queue:
@@ -148,13 +149,13 @@ public class StopWatch extends AppCompatActivity {
         }
 
         Log.d("-> savesTime() ->", "Times: " + savedTime);
-        addNewTime(savedTime, parentScrollView);
+        addNewTime(savedTime, parentLayout);
     }
 
     private String convertBaseToTime(Long baseTime) {
         // Get time from system:
         long now = SystemClock.elapsedRealtime();
-        String mDefaultFormat = "%02d:%02d:%02d";
+        String mDefaultFormat = "%02d:%02d";
         /*
             Initiate conversion
             -
@@ -166,33 +167,57 @@ public class StopWatch extends AppCompatActivity {
         int mm = (int) ((seconds % 3600) / 60);
         int ss = (int) (seconds % 60);
 
-        String toLocaltime = String.format(Locale.US, mDefaultFormat, hh, mm, ss);
+        String toLocaltime = String.format(Locale.US, mDefaultFormat, mm, ss);
 
 //        System.out.println(toLocaltime);    // Verify
         return toLocaltime;
 
     }
 
-    private void addNewTime(Queue<String> childTimeList, LinearLayout parentScrollView) {
+    private void addNewTime(Queue<String> childTimeList, LinearLayout parentLayout) {
         /*
             OBJECTIVE: Way to gets TIME and ADDS into ScrollView
          */
         int initialSize = childTimeList.size();
+        Queue<String> childCopy = new LinkedList<>();
+        childCopy.addAll(childTimeList);
+
+        Log.d("-> Input Queue", "-> .copy: " + childTimeList);
+
+        // Clears the ScrollView content:
+        parentLayout.removeAllViews();
 
         for (int i = 0; i < initialSize; i++ ) {
 
+            String thisPeek = childCopy.peek();
+
             // Creates a button & set its name to be equal to `childTime`:
-            Button childButton = new Button(this.getApplicationContext());
-            childButton.setText(childTimeList.peek());
+            Button childButton = new Button(StopWatch.this);
+            childButton.setId(i);
+            childButton.setText(R.string.test_string);
+            childButton.setText(childCopy.peek());
             childButton.setAllCaps(true);
-            childButton.setTextSize(10 ,14);
+            childButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP,20);
+            childButton.setTextColor(getResources().getColor(R.color.colorWhite));
+            childButton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/MLight.ttf"));
+            childButton.setVisibility(View.VISIBLE);
             childButton.setBackgroundResource(R.drawable.bigbuttonlightpurple);
+            childButton.setLayoutParams(
+                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT)
+            );
 
-            Log.d("-> Inside QUEUE: ", " -> Element: " + childTimeList.peek()); // Verify
+            Log.d("<-- Inside QUEUE -->",
+                    "-> (i): " + i + ", Element: " + thisPeek +
+                            ", Button Text: " + childButton.getText() +
+                            ", Button TextSize: " + childButton.getTextSize()
+            ); // Verify
 
-            // Adds that button into `parentScrollView`:
-            parentScrollView.addView(childButton);
+            // Adds that button into `parentLayout`:
+            parentLayout.addView(childButton);
+            parentLayout.invalidate();
+            parentLayout.requestLayout();
+
+            childCopy.poll();
         }
-
     }
 }
