@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">OpenWeatherConsumerApp</string>
+    <string name="app_name">This Weather</string>
+    <string name="typed_address">RECIFE, BR</string>
+    <string name="updated_at">26 de Fevereiro de 2020, 10:45 AM</string>
+    <string name="weather_status">Cool</string>
+    <string name="temperature_now">31ºC</string>
+    <string name="min_temp_status">04:07 AM</string>
+    <string name="max_temp_status">12:03 PM</string>
+
+    <string name="sunrise">Nasc. sol</string>
+    <string name="sunrise_value">05:05 AM</string>
+    <string name="sunset">Pôr do sol</string>
+    <string name="sunset_value">17:47 PM</string>
+    <string name="humidity">Humidade</string>
+    <string name="humidity_value">95%</string>
+    <string name="pressure">Pressão</string>
+    <string name="pressure_value">655 mmHg</string>
+    <string name="wind">Vento</string>
+    <string name="wind_value">3.5 SW</string>
+
+    <string name="resource_from">Fonte:</string>
+    <string name="resource_origin">OpenWeather®</string>
 </resources>
