@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".components.Form">
+    android:layout_weight="1"
+    tools:context=".components.Form"
+    tools:ignore="MissingDefaultResource">
 
 
     <LinearLayout
@@ -30,12 +32,21 @@
             />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/edited_text"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/label_name" />
+
+        <Button
+            android:id="@+id/send_data_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/button_send"
+            />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

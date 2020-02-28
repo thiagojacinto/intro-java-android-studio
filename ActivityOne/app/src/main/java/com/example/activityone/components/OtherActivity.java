@@ -21,15 +21,23 @@ public class OtherActivity extends AppCompatActivity {
 
         // Get elements
         backButton = findViewById(R.id.back_button);
-        formButton = findViewById(R.id.button_one);
-        cameraButton = findViewById(R.id.button_two);
-        emergencyCallButton = findViewById(R.id.button_three);
+        formButton = findViewById(R.id.button_form);
+        cameraButton = findViewById(R.id.button_camera);
+        emergencyCallButton = findViewById(R.id.button_emergency_call);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent backToMainActivity = new Intent(OtherActivity.this, MainActivity.class);
                 startActivity(backToMainActivity);
+            }
+        });
+
+        formButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToFormActivity = new Intent(OtherActivity.this, Form.class);
+                startActivity(goToFormActivity);
             }
         });
 

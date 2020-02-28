@@ -7,4 +7,6 @@
     <string name="button_camera">Câmera</string>
     <string name="button_emergency_call">Chamada de Emergência</string>
     <string name="label_name">Nome</string>
+    <string name="button_send">Enviar</string>
+    <string name="label_confirm">Realizar ligação de emergência?</string>
 </resources>

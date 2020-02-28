@@ -6,35 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.activityone.R;
 
-public class Form extends AppCompatActivity {
+public class ResultFromFormLite extends AppCompatActivity {
 
-    Button backButton, sendButton;
-    EditText editableData;
+    Button backButton;
+    TextView resultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_form_lite);
+        setContentView(R.layout.activity_result_from_form_lite);
 
         // Get elements
         backButton = findViewById(R.id.back_button);
-        sendButton = findViewById(R.id.send_data_button);
-        editableData = findViewById(R.id.edited_text);
+        resultText = findViewById(R.id.text_view_result);
 
-        // Back button handler
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Moving to `OtherActivity`
-                Intent backToOtherActivity = new Intent(Form.this, OtherActivity.class);
-                startActivity(backToOtherActivity);
+                Intent backToFormActivity = new Intent(ResultFromFormLite.this, Form.class);
+                startActivity(backToFormActivity);
             }
         });
-
     }
-
 }

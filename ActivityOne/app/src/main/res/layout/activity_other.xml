@@ -23,28 +23,27 @@
             android:text="@string/back_button"
             />
         <Button
-            android:id="@+id/button_one"
-            android:layout_width="wrap_content"
+            android:id="@+id/button_form"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="@string/button_form"
             />
         <Button
-            android:id="@+id/button_two"
-            android:layout_width="wrap_content"
+            android:id="@+id/button_camera"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:text="@string/button_camera"
             />
         <Button
-            android:id="@+id/button_three"
+            android:id="@+id/button_emergency_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="0"
             android:text="@string/button_emergency_call"
             />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
