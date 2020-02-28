@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ActivityOne</string>
+    <string name="other_activity">Chamar outra activity</string>
+    <string name="back_button">Voltar</string>
+    <string name="button_placeholder">this is a simple placeholder</string>
+    <string name="button_form">Formulário</string>
+    <string name="button_camera">Câmera</string>
+    <string name="button_emergency_call">Chamada de Emergência</string>
+    <string name="label_name">Nome</string>
+</resources>

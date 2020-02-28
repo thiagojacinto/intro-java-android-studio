@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         // Runs the created method
         weatherTask().execute()
-
     }
 
     inner class weatherTask() : AsyncTask<String, Void, String>() {
@@ -47,13 +46,14 @@ class MainActivity : AppCompatActivity() {
 
             var response : String?
 
-            try{
+            try {
                 response = URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&lang=pt_br&appid=$API_KEY").readText(
                         Charsets.UTF_8
                     )
-            }catch (error : Exception){
+            } catch (error : Exception){
                 response = null
             }
+
             return response
         }
 
