@@ -35,6 +35,18 @@ public class Form extends AppCompatActivity {
             }
         });
 
+        // Send data button handler
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataTyped = editableData.getEditableText().toString();
+
+                Intent sendData = new Intent(Form.this, ResultFromFormLite.class);
+                sendData.putExtra("name", dataTyped);
+                startActivity(sendData);
+            }
+        });
+
     }
 
 }
