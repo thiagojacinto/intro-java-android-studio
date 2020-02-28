@@ -31,5 +31,10 @@ public class ResultFromFormLite extends AppCompatActivity {
                 startActivity(backToFormActivity);
             }
         });
+
+        Bundle external = getIntent().getExtras();
+        String textCaught = external.getString("name");
+
+        resultText.setText(textCaught);
     }
 }
