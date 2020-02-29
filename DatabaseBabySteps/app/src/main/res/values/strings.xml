@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DatabaseBabySteps</string>
+    <string name="placeholder">No content to show</string>
+    <string name="text_hint">Type some note here</string>
+    <string name="save_button">Save this note</string>
+    <string name="back_button">Back</string>
+
 </resources>
