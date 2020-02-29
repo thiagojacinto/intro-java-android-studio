@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.contactslist.components.AmigosActivity;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -49,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                        addAmigos();
                    }
         });
-
-
 
     }
 

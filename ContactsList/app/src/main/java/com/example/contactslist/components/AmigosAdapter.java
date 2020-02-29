@@ -18,6 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.contactslist.R;
+import com.example.contactslist.model.Amigos;
+
 import java.util.List;
 
 public class AmigosAdapter extends ArrayAdapter<Amigos> {
@@ -44,7 +47,6 @@ public class AmigosAdapter extends ArrayAdapter<Amigos> {
 
         //Retorna a posisao da lista de amigos
        final Amigos amigos = amigosList.get(position);
-
 
         //getting views
         TextView textViewNome = view.findViewById(R.id.textViewNome);
@@ -74,9 +76,9 @@ public class AmigosAdapter extends ArrayAdapter<Amigos> {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
-                builder.setTitle("Voçê deseja apagar seu coleginha?");
-                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder alert = new AlertDialog.Builder(mCtx);
+                alert.setTitle("@string/delete_confirm");
+                alert.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String sql = "DELETE FROM amigos WHERE id = ?";
@@ -84,13 +86,13 @@ public class AmigosAdapter extends ArrayAdapter<Amigos> {
                         reloadAmigosFromDatabase();
                     }
                 });
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 });
-                AlertDialog alertaApagar = builder.create();
+                AlertDialog alertaApagar = alert.create();
                 alertaApagar.show();
             }
         });

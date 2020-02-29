@@ -3,14 +3,14 @@ package com.example.contactslist.model;
 public class Amigos {
 
     int id;
-    String nome, local, dataencontro;
+    String nome, local, dataDoEncontro;
     double numero;
 
     public Amigos(int id, String nome, String local, String dataencontro, double numero) {
         this.id = id;
         this.nome = nome;
         this.local = local;
-        this.dataencontro = dataencontro;
+        this.dataDoEncontro = dataencontro;
         this.numero = numero;
     }
 
@@ -27,7 +27,7 @@ public class Amigos {
     }
 
     public String getDataEncontro() {
-        return dataencontro;
+        return dataDoEncontro;
     }
 
     public double getNumero() {

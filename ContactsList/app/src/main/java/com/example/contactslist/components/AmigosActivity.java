@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.contactslist.MainActivity;
+import com.example.contactslist.R;
+import com.example.contactslist.model.Amigos;
+
 import java.util.ArrayList;
 import java.util.List;
 
