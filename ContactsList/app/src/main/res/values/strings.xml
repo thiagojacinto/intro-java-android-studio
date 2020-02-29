@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">App3</string>
+    <string name="app_name">Contacts List</string>
+    <string name="add_contact">Adicionar contato</string>
+    <string name="add_hint">Digite o nome do contato</string>
+    <string name="where_met">Onde se conheceram?</string>
+    <string name="type_number">Digite o telefone</string>
+    <string name="list_contacts">Listar contatos</string>
+    <string name="delete_confirm">Voçê deseja apagar este contato?</string>
 
     <array name="local">
         <item>Escola</item>
