@@ -23,12 +23,10 @@ public class NotesDAO {
     }
 
     public void open() throws SQLException {
-
         database = SQLiteOpenHelper.getWritableDatabase();
     }
 
     public void close() {
-
         SQLiteOpenHelper.close();
     }
 
