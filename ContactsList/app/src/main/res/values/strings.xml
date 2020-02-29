@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">ContactsList</string>
+    <string name="app_name">App3</string>
+
+    <array name="local">
+        <item>Escola</item>
+        <item>Trabalho</item>
+        <item>Hospital</item>
+        <item>Na rua</item>
+        <item>Na noite</item>
+    </array>
+
 </resources>
