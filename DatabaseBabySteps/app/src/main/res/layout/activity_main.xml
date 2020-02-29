@@ -13,7 +13,7 @@
         android:padding="20dp"
     >
         <ListView
-            android:id="@+id/list"
+            android:id="@+id/notes_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -28,6 +28,37 @@
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="italic"
             />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            />
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_shape"
+            android:text="@string/start_saving_button"
+            android:textColor="@color/grayer"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            />
+        <Button
+            android:id="@+id/clear_all_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_shape"
+            android:text="@string/clear_all_button"
+            android:textColor="@color/grayer"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
     </LinearLayout>
 
 

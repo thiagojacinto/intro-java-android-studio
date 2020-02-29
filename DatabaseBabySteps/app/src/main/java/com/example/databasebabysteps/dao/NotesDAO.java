@@ -50,7 +50,14 @@ public class NotesDAO {
         long id = note.getId();
         database.delete(CustomSQLiteOpenHelper.TABLE_NOTES, CustomSQLiteOpenHelper.COLUMN_ID
                 + " = " + id, null);
+    }
 
+    public void update(Note note) {
+        long id = note.getId();
+        String noteText = note.getNote();
+        ContentValues valuesToUpdate = new ContentValues();
+        valuesToUpdate.put(CustomSQLiteOpenHelper.COLUMN_NOTES, noteText);
+        database.update(CustomSQLiteOpenHelper.TABLE_NOTES, valuesToUpdate, CustomSQLiteOpenHelper.COLUMN_ID + " = " + id, null);
     }
 
     public List<Note> getAll() {

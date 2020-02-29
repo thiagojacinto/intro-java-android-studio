@@ -33,7 +33,7 @@ public class AddNote extends AppCompatActivity {
         // Instantiate DAO
         notesDAO = new NotesDAO(this);
         try {
-            //
+            // Initiate DAO interaction:
             notesDAO.open();
 
             // On click BACK
